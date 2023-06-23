@@ -128,15 +128,24 @@ public class Main {
 
         String bookTitle = sc.nextLine();
 
-        System.out.println("Here is your book sir.It will be $"+store.getBook(bookTitle).getCost());
+        for(int i=0;i<listOfBooks().length;i++){
+            if(store.isAvailable(i).getTitle().contains(bookTitle)){
+
+                System.out.println("Here is your book sir.It will be $"+store.getBook(bookTitle).getCost());
         
-        System.out.println("Would like to purchase another one? (yes- to buy,  no- to checkout) in lowercase");
-        String buyAgain = sc.nextLine(); 
-        while(buyAgain.equals("yes")){
-            purchaseBook();
+                System.out.println("Would like to purchase another one? (yes- to buy,  no- to checkout) in lowercase");
+                String buyAgain = sc.nextLine(); 
+                while(buyAgain.equals("yes")){
+                    purchaseBook();
+                }
+                store.sellBook(bookTitle);
+                System.out.println("Here is your change..  \nThank you visit Again!");
+
+            }
+            
         }
-        store.sellBook(bookTitle);
-        System.out.println("Here is your change..  \nThank you visit Again!");
+                
+        System.out.println("Book not available. Visit again!");
     }
 
     public static void updateStore(){

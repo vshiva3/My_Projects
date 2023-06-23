@@ -27,6 +27,10 @@ public class Store {
         return new Books(null);
     }
 
+    public Books isAvailable(int index){
+        return new Books(books.get(index));
+    }
+
     public void sellBook(String title){
         for(int i=0;i<this.books.size();i++){
             if(books.get(i).getTitle().contains(title)){
